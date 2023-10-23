@@ -1,9 +1,10 @@
 import './app.css';
+import Layout from "./layout/Layout";
 
 function App() {
   return (
     <>
-      <h1 className='text-2xl text-red-800 font-mono font-bold'>Hello World!</h1>
+      <Layout/>
        
     </>
   )
