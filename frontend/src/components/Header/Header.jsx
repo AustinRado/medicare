@@ -44,7 +44,7 @@ const Header = () => {
                     >{link.display}
                     </NavLink>
                   </li>
-               ))};
+               ))}
               </ul>
             </div>
         </div>
