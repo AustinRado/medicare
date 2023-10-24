@@ -1,6 +1,8 @@
 import {useEffect, useRef} from 'react';
 import medicare from '../../assets/images/medicare.jpg';
+import doctor1 from '../../assets/images/doctor1.jpeg';
 import { NavLink, Link } from 'react-router-dom';
+import { BiMenu } from 'react-icons/bi';
  
 //array navLinks that redirects to the pages
 const navLinks = [
@@ -23,8 +25,36 @@ const navLinks = [
 ];
 
 const Header = () => {
+  const headerRef = useRef(null);
+  const menuRef = useRef(null);
+
+  /**
+   * @desc 
+   * 
+   */
+  const handleStickyHeader = () =>{
+    window.addEventListener('scroll', () => {
+      if(document.body.scrollTop > 80 || document.documentElement.scrollTop > 80){
+        headerRef.current.classList.add('sticky__header');
+      }else{
+        headerRef.current.classList.remove('sticky__header');
+      }
+    });  
+  };
+  useEffect(()=>{
+    handleStickyHeader();
+    return () => window.removeEventListener('scroll', handleStickyHeader);
+  });
+
+ /**
+  * @desc 
+  * 
+  */
+
+  const toggleMenu = () => menuRef.current.classList.toggle('show__menu');
+
   return (
-    <header className='header flex items-center'>
+    <header className='header flex items-center'ref={headerRef}>
       <div className='container'>
         <div className='flex items-center justify-between'>
           {/*========logo=========*/}
@@ -33,19 +63,37 @@ const Header = () => {
             </div>
 
             {/*========menu=========*/}
-            <div className='navigation'>
+            <div className='navigation' ref={menuRef} onClick={toggleMenu}>
               <ul className='menu flex items-center gap-[2.7rem]'>
                {navLinks.map((link, index) => (
                   <li key = {index}>
                     <NavLink
                     to={link.path}
                     className={navClass => navClass.isActive ? 'text-primaryColor text-[16px] leading-7 font-[600]' :
-                    'text-textColor text-[16px] leading-7 font-[500] '}
+                    'text-textColor text-[16px] leading-7 font-[500] hover:text-primaryColor'}
                     >{link.display}
                     </NavLink>
                   </li>
                ))}
               </ul>
+            </div>
+
+            {/*========nav right=========*/}
+            <div className='flex items-center gap-4'>
+                <div className='hidden'>
+                  <Link to='/'>
+                    <figure className='w-[35px] h-[35px] rounded-full cursor-pointer'>
+                      <img src={doctor1} className='w-full h-[35px] rounded-full' alt='doctor' />
+                    </figure>
+                  </Link>
+                </div>
+                <Link to='/login'>
+                  <button className='bg-primaryColor py-2 px-6 text-black font-[600] h-[44px] flex items-center justify-center rounded-full'>Login</button>
+                </Link>
+                
+                <span className='md:hidden' onClick={toggleMenu}>
+                  <BiMenu className='w-6 h-6 cursor-pointer'/>
+                </span>
             </div>
         </div>
       </div>
