@@ -6,6 +6,9 @@ import shah from '../assets/images/shah.png';
 import fdoctors from '../assets/images/fdoctors.png';
 import location1 from '../assets/images/location1.png';
 import Book from '../assets/images/Book.png';
+import About from '../components/About/About';
+import ServicesList from '../components/Services/ServicesList';
+
 
 const Home = () => {
   return (
@@ -117,7 +120,19 @@ const Home = () => {
           
               </div>
         </section>
-        
+        <About/>
+
+        {/*=====service section =======*/}
+        <section>
+        <div className='container'>
+          <div className='xl:w-[470px] mx-auto'>
+            <h2 className='heading text-center'>Our medical services</h2>
+            <p className='text__para text-center'>Welcome to the Heart of Quality Healthcare: Explore Our Comprehensive Range of Medical Services</p>
+          </div>
+          <ServicesList/>
+        </div>
+        </section>
+        {/*=====service end =======*/}
 
     </>
   );
