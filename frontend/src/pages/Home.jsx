@@ -14,9 +14,9 @@ const Home = () => {
 
         <section className='hero__section pt-[60px] 2xl:h-[800px]'>
           <div className='container'>
-            <div className='flex flex-col lg:flex-row gap-[90px] items-center justify-between'>
+            <div className='flex flex-col lg:flex-row gap-[90px] items-center justify-between '>
               {/*========hero content=======*/}
-              <div>
+              <div className='hero__section'>
                 <div className='lg:w-[570px]'>
                   <h1 className='text-[36px] leading-[46px] text-headingColor font-[800] md:text-[60px] md:leading-[70px]'>Welcome to MediCare, Your Journey to Better Health.</h1>
                   <p className='text__para'>
@@ -51,7 +51,7 @@ const Home = () => {
                 <div className='w-1/2'>
                   <img className='w-full h-full' src={davis} alt='doctor'/>
                 </div>
-                <div className='mt-[30px] w-1/2 flex flex-col'>
+                <div className='mt-[15px] w-1/2 flex flex-col'>
                   <img src={shah} className='w-full mb-[30px]' alt='doctor'/>
                   <img  src={her} className='w-full' alt='doctor'/>
                 </div>
