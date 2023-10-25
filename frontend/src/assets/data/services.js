@@ -19,7 +19,7 @@ export const services = [
     },
     {
       name: "Geriatric Care",
-      desc: "Our geriatric care services are tailored to meet the unique healthcare needs of older adults. We focus on addressing age-related health issues and providing compassionate, senior-centered care.",
+      desc: "Our geriatric care services are tailored to meet unique healthcare needs of older adults. We focus on addressing age-related health issues and providing compassionate, senior-centered care.",
       bgColor: "rgba(254, 182, 13, .2)",
       textColor: "#FEB60D",
     },
@@ -47,4 +47,10 @@ export const services = [
         bgColor: "rgba(1, 181, 197, .2)",
         textColor: "#01B5C5",
       },
+      {
+        name: "Primary Care Services",
+        desc: "At MediCare, our primary care providers are dedicated to your overall health. We offer routine check-ups, preventive care, and basic medical treatment to keep you and your family in the best of health condition.",
+        bgColor: "rgba(151, 113, 255, .2)",
+        textColor: "#9771FF",
+      }
   ];
