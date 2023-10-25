@@ -1,4 +1,3 @@
-import React from 'react';
 import {Link} from 'react-router-dom';
 import {BsArrowRight} from 'react-icons/bs';
 import davis from '../assets/images/davis.jpeg';
@@ -49,10 +48,10 @@ const Home = () => {
               </div>
               {/*========hero content=======*/}
               <div className='flex gap-[30px] justify-end'>
-                <div>
+                <div className='w-1/2'>
                   <img className='w-full h-full' src={davis} alt='doctor'/>
                 </div>
-                <div className='mt-[30px]'>
+                <div className='mt-[30px] w-1/2 flex flex-col'>
                   <img src={shah} className='w-full mb-[30px]' alt='doctor'/>
                   <img  src={her} className='w-full' alt='doctor'/>
                 </div>
@@ -107,8 +106,8 @@ const Home = () => {
                   </div>
 
                   <div className='mt-[30px]'>
-                    <h2 className='text-[26px] leading-9 text-headingColor font-[700] text-center'>Book an Appointment</h2>
-                    <p className='text-[16px] leading-7 text-textColor font-[400] mt-4 text-center'>Seamless healthcare at your fingertips. Book an Appointment and take the first step towards your well-being.</p>
+                    <h2 className='text-[26px] leading-9 text-headingColor font-[700] text-center'>Book Appointment</h2>
+                    <p className='text-[16px] leading-7 text-textColor font-[400] mt-4 text-center'>Seamless healthcare at your fingertips. Book an Appointment and safeguard your well-being.</p>
                     <Link to='/doctors' className='w-[44px] h-[44px] rounded-full boarder boarder-solid border-[#181A1E] mt-[30px] mx-auto flex items-center justify-center group hover:bg-primaryColor hover:border-none'>
                       <BsArrowRight className='group-hover:text-white w-6 h-5'/>
                     </Link>
