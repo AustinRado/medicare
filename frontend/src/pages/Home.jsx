@@ -1,8 +1,7 @@
 import {Link} from 'react-router-dom';
 import {BsArrowRight} from 'react-icons/bs';
 import davis from '../assets/images/davis.jpeg';
-import her from '../assets/images/her.jpeg';
-import shah from '../assets/images/shah.png';
+import team from '../assets/images/team.png';
 import fdoctors from '../assets/images/fdoctors.png';
 import location1 from '../assets/images/location1.png';
 import Book from '../assets/images/Book.png';
@@ -53,14 +52,9 @@ const Home = () => {
               </div>
               {/*========hero content=======*/}
               <div className='flex gap-[30px] justify-end'>
-                <div className='w-1/2'>
-                  <img className='w-full h-full' src={davis} alt='doctor'/>
-                </div>
-                <div className='mt-[15px] w-1/2 flex flex-col'>
-                  <img src={shah} className='w-full mb-[30px]' alt='doctor'/>
-                  <img  src={her} className='w-full' alt='doctor'/>
-                </div>
 
+                  <img className='w-full h-full' src={team} alt='doctor'/>
+                
               </div>
             </div>
           </div>

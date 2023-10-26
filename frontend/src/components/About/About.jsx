@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import doctor1 from '../../assets/images/doctor1.jpeg';
+import docHer from '../../assets/images/docHer.png';
 
 const About = () => {
   return (
@@ -8,7 +8,7 @@ const About = () => {
             <div className="flex justify-between gap-[50px] lg:gap-[130px] xl:gap-0 flex-col lg:flex-row">
                 {/*==========about img==========*/}
                 <div className="relative w-3/4 lg:w-1/2 xl:w-[770px] z-10 order-1">
-                    <img src={doctor1} className='h-[90%]' alt="about"/>
+                    <img src={docHer} className='h-[90%]' alt="about"/>
                 </div>
 
                 {/*==========about img==========*/}
