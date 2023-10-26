@@ -9,6 +9,7 @@ import Feature from '../components/Feature/Feature';
 import ServicesList from '../components/Services/ServicesList';
 import Doctor from '../components/Doctor/Doctor';
 import Faq from '../components/Faq/Faq';
+import Testimonials from '../components/Testimonials/Testimonials';
 
 
 const Home = () => {
@@ -135,6 +136,8 @@ const Home = () => {
         <Doctor/>
         {/*======Faq section =======*/}
         <Faq/>
+        {/*======Testimonials section =======*/}
+        <Testimonials/>
 
     </>
   );
