@@ -7,6 +7,7 @@ import fdoctors from '../assets/images/fdoctors.png';
 import location1 from '../assets/images/location1.png';
 import Book from '../assets/images/Book.png';
 import About from '../components/About/About';
+import Feature from '../components/Feature/Feature';
 import ServicesList from '../components/Services/ServicesList';
 
 
@@ -63,7 +64,7 @@ const Home = () => {
             </div>
           </div>
         </section>
-        {/*=======section end=======*/}
+        {/*=======hero section end=======*/}
 
         <section className='pt-[60px] 2xl:pt-[100px]'>
           <div className='container'>
@@ -132,7 +133,10 @@ const Home = () => {
           <ServicesList/>
         </div>
         </section>
-        {/*=====service end =======*/}
+        {/*=====service section end =======*/}
+        {/*=====feature section=======*/}
+        <Feature />
+        {/*=====feature section end =======*/}
 
     </>
   );
