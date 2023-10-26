@@ -9,6 +9,7 @@ import Book from '../assets/images/Book.png';
 import About from '../components/About/About';
 import Feature from '../components/Feature/Feature';
 import ServicesList from '../components/Services/ServicesList';
+import Doctor from '../components/Doctor/Doctor';
 
 
 const Home = () => {
@@ -136,7 +137,8 @@ const Home = () => {
         {/*=====service section end =======*/}
         {/*=====feature section=======*/}
         <Feature />
-        {/*=====feature section end =======*/}
+        {/*======Doctor section =======*/}
+        <Doctor/>
 
     </>
   );

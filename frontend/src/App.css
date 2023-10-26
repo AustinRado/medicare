@@ -9,6 +9,10 @@ body{
   font-family: 'Manrope', sans-serif;
 }
 
+.image-container {
+  height: 300px; /* You can adjust the height as needed */
+}
+
 .sticky__header{
   width: 100%;
   height: 80px;
