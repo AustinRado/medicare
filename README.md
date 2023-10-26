@@ -12,5 +12,5 @@ MERN stack has majorly been employed. This includes
 4. MongoDb a NoSql database has been employed to capture all the necessary information .
 5. JWT for user authentication hence ensuring security of users and their data.
 5. Stripe payment gateway.
-6. AI chatGPT chatbot to keep the patients engaged.
+6. Trained AI chatGPT chatbot to keep the patients engaged.
 7. Docker, a platform that lets developers build, share, and run containerized apps with multiple languages, frameworks, and tools.

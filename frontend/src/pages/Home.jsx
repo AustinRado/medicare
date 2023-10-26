@@ -1,6 +1,5 @@
 import {Link} from 'react-router-dom';
 import {BsArrowRight} from 'react-icons/bs';
-import davis from '../assets/images/davis.jpeg';
 import team from '../assets/images/team.png';
 import fdoctors from '../assets/images/fdoctors.png';
 import location1 from '../assets/images/location1.png';
@@ -9,6 +8,7 @@ import About from '../components/About/About';
 import Feature from '../components/Feature/Feature';
 import ServicesList from '../components/Services/ServicesList';
 import Doctor from '../components/Doctor/Doctor';
+import Faq from '../components/Faq/Faq';
 
 
 const Home = () => {
@@ -133,6 +133,8 @@ const Home = () => {
         <Feature />
         {/*======Doctor section =======*/}
         <Doctor/>
+        {/*======Faq section =======*/}
+        <Faq/>
 
     </>
   );
