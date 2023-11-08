@@ -29,8 +29,8 @@ const Header = () => {
   const menuRef = useRef(null);
 
   /**
-   * @desc 
-   * 
+   * @desc adds sticky header effect when user scrolls more than 80 px
+   * @returns void
    */
   const handleStickyHeader = () =>{
     window.addEventListener('scroll', () => {
@@ -41,6 +41,11 @@ const Header = () => {
       }
     });  
   };
+
+  /**
+   * calls handleStickyHeader when mounted or updated
+   * Sets up a cleanup function to remove the scroll event listener when the component is unmounted.
+   */ 
   useEffect(()=>{
     handleStickyHeader();
     return () => window.removeEventListener('scroll', handleStickyHeader);
