@@ -1,13 +1,18 @@
+import { useState } from 'react';
 import wasabi from '../../assets/images/wasabi.jpeg';
 import { formatDate } from '../../utils/formatDate';
 import { AiFillStar } from 'react-icons/ai';
+import FeedbackForm from './FeedbackForm';
 
 const Feedback = () => {
+
+    const [showFeedbackForm, setShowFeedbackForm] = useState(false);
+
   return (
     <div>
       <div className='mb-[30px]'>
         <h4 className='text-[20px] leading-7 font-bold text-headingColor mb-7'>All reviews (272)</h4>
-      </div>
+     
       <div className='flex justify-between gap-10 mb-7'>
         <div className='flex gap-3'>
             <figure className='w-10 h-10'>
@@ -21,9 +26,17 @@ const Feedback = () => {
             </div>
         </div>
 
-        <div className='flex gap-1 '>{[...Array(5).keys()].map((_, index) => <AiFillStar key={index} color='#0067FF'/>)}</div>
+        <div className='flex gap-1 '>{[...Array(5).keys()].map((_, index) => <AiFillStar key={index} color='#0067FF'/>)}
+        </div>
      </div>
 
+    </div>
+        {!showFeedbackForm && <div className='text-center'>
+        <button 
+        onClick={()=>setShowFeedbackForm(true)}
+        className='btn'>Give feedback</button>
+        </div> }
+        {showFeedbackForm && <FeedbackForm/>}
     </div>
   )
 }
