@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, } from 'react';
 import wasabi from '../../assets/images/wasabi.jpeg';
 import { formatDate } from '../../utils/formatDate';
 import { AiFillStar } from 'react-icons/ai';
