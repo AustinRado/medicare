@@ -3,12 +3,14 @@ import doctor1 from "../../assets/images/doctor1.jpeg";
 import star from "../../assets/images/star.png";
 import DoctorAbout from "./DoctorAbout";
 import Feedback from "./Feedback";
+import SidePanel from "./SidePanel";
 
 
 const DoctorDetails = () => {
 
   const [tab, setTab] = useState("about");
   return (
+    <section>
     <div className="max-w-[1170px] px-5 mx-auto">
       <div className="grid md:grid-cols-3 gap-[50px]">
         <div className="md:col-span-2">
@@ -50,8 +52,10 @@ const DoctorDetails = () => {
 
           
         </div>
+        <div><SidePanel/></div>
       </div>
     </div>
+    </section>
   )
 }
 
