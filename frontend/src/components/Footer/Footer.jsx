@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import medicare from '../../assets/images/medicare.jpg';
 import { AiFillGithub, AiFillTwitterCircle } from 'react-icons/ai';
@@ -77,7 +76,7 @@ const Footer = () => {
           
           <div>
             <img src={medicare} alt='logo'/>
-            <p className='text-[16px] leading-7 font-[400] text-textColor mt-4'>Copyright © {year} developed by Austin Rado all right reserved.</p>
+            <p className='text-[16px] leading-7 font-[400] text-textColor mt-4'>Copyright © {year} developed by Rado, all rights reserved.</p>
 
             <div className='flex items-center gap-3 mt-4'>
             {socialLinks.map((link, index)=><Link to={link.path} key={index}>{link.display}</Link>)}
