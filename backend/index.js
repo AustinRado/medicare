@@ -4,6 +4,7 @@ import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import mongodb from "mongodb";
+import authRoutes from "./Routes/auth.js";
 
 
 dotenv.config();
@@ -31,14 +32,16 @@ const connectDB = async() => {
     } catch (error) {
         console.log(error);
     }
-}
+};
 
 //middleware
 app.use(express.json()); // parse incoming JSON requests
-app.use(cookieParser()); //pasrse cookies attached to the clients request (use auth or session identifiers)
+app.use(cookieParser()); //parse cookies attached to the clients request (use auth or session identifiers)
 app.use(cors()); // allow cross-origin requests
+app.use('/api/v1/auth', authRoutes); //routes for auth
   
-  app.listen(port, () => {
-    connectDB();
-    console.log(`Example app listening on port ${port}`);
-  });
+
+app.listen(port, () => {
+  connectDB();
+  console.log(`Example app listening on port ${port}`);
+});
