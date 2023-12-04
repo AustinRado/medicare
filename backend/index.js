@@ -41,7 +41,7 @@ app.use(cookieParser()); //parse cookies attached to the clients request (use au
 app.use(cors()); // allow cross-origin requests
 app.use('/api/v1/auth', authRoutes); //routes for auth
 app.use('/api/v1/users', userRoutes); //routes for users
-app.use('/api/v1/doctors', doctorRoutes); //routes for users
+app.use('/api/v1/doctors', doctorRoutes); //routes for doctors
   
 
 app.listen(port, () => {
