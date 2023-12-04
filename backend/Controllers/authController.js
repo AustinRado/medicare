@@ -15,7 +15,8 @@ export const register = async (req, res) => {
     try {
         let user = null;
 
-        //check if user exists already in the database if reg as a patient or doctor
+        //check if user exists already in the database  
+        // reg as a patient or doctor - based on role
         if(role === "patient") {
             user = await User.findOne({email});
         } else {
@@ -71,9 +72,12 @@ export const login = async (req, res) => {
     const {email} = req.body;
     try {
         let user = null;
+
+        // Find a user in either User or Doctor model based on email
         const patient = await User.findOne({email});
         const doctor = await User.findOne({email});
-
+        
+         // Check if the user exists
         if (patient){
             user = patient;
         }
@@ -101,7 +105,7 @@ export const login = async (req, res) => {
         const token = generateToken(user);
         const {password, role, appointment, ...rest} = user._doc;
 
-        res.status(200).json({status:true, message:"Successfully logged in", token, data:{...rest}, role});
+        res.status(200).json({status:true, message :"Successfully logged in", token, data:{...rest}, role});
 
     } catch (error) {
         res.status(500).json({status:false, message:"Unsuccessfully logging in"});

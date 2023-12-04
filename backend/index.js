@@ -3,8 +3,9 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-import mongodb from "mongodb";
 import authRoutes from "./Routes/auth.js";
+import userRoutes from "./Routes/user.js";
+import doctorRoutes from "./Routes/doctor.js";
 
 
 dotenv.config();
@@ -39,6 +40,8 @@ app.use(express.json()); // parse incoming JSON requests
 app.use(cookieParser()); //parse cookies attached to the clients request (use auth or session identifiers)
 app.use(cors()); // allow cross-origin requests
 app.use('/api/v1/auth', authRoutes); //routes for auth
+app.use('/api/v1/users', userRoutes); //routes for users
+app.use('/api/v1/doctors', doctorRoutes); //routes for users
   
 
 app.listen(port, () => {
