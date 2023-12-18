@@ -43,7 +43,8 @@ export const getAllDoctor = async(req, res)=>{
     const {id} = req.params
 
     try {
-        // query parameter to filter data based on specific criteria
+        //frontend search functionality  to filter doctors by name and specialization
+        // {query} parameter to filter data based on specific criteria
         const {query} = req.query
         let doctors;
         //check if query params exists
@@ -53,7 +54,7 @@ export const getAllDoctor = async(req, res)=>{
                 {name: {$regex: query, $options: "i"}},
                 {specialization: {$regex: query, $options: "i"}},
             ]
-        }).select("-password")
+        }).select("-password") //exclude the password
         }else{
             doctors = await Doctor.find({isApproved:'approved'}).select("-password");
         }
