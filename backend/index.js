@@ -6,6 +6,7 @@ import dotenv from "dotenv";
 import authRoutes from "./Routes/auth.js";
 import userRoutes from "./Routes/user.js";
 import doctorRoutes from "./Routes/doctor.js";
+import reviewRoutes from "./Routes/review.js";
 
 
 dotenv.config();
@@ -42,6 +43,7 @@ app.use(cors()); // allow cross-origin requests
 app.use('/api/v1/auth', authRoutes); //routes for auth
 app.use('/api/v1/users', userRoutes); //routes for users
 app.use('/api/v1/doctors', doctorRoutes); //routes for doctors
+app.use('/api/v1/reviews', reviewRoutes); //routes for doctors
   
 
 app.listen(port, () => {
