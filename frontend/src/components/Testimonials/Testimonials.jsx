@@ -9,6 +9,8 @@ import { HiStar } from 'react-icons/hi';
 
 const Testimonials = () => {
   return (
+    <section>
+    <div className='container'>
     <div className='mt-[30px] lg:mt-[55px]'>
     <Swiper
       modules={[Pagination]}
@@ -93,6 +95,8 @@ const Testimonials = () => {
   
     </Swiper>
     </div>
+    </div>
+    </section>
   )
 }
 
