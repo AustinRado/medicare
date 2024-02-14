@@ -17,9 +17,10 @@ export const register = async (req, res) => {
 
         //check if user exists already in the database  
         // reg as a patient or doctor - based on role
+        // determines whether to use User or Doctor model
         if(role === "patient") {
             user = await User.findOne({email});
-        } else {
+        } else if (role === "doctor") {
             user = await Doctor.findOne({email});
         }
 
@@ -28,7 +29,10 @@ export const register = async (req, res) => {
                 message: "User already exists",
             });
         }
-        //hash password
+        //hash password for security using bycrypt
+        // salt is a random value (cryptographic)
+        //10 rep time taken to compute the hash
+        //takes two arguments -password and salt
         const salt = await bycrypt.genSalt(10);
         const hashedPassword = await bycrypt.hash(password, salt);
     
@@ -42,7 +46,7 @@ export const register = async (req, res) => {
                 photo,
                 gender,
             });
-        } else {
+        } else if (role === "doctor") {
             user = await Doctor.create({
                 name,
                 email,
@@ -60,7 +64,7 @@ export const register = async (req, res) => {
       });
       
     } catch (error) {
-        res.status(200).json({
+        res.status(500).json({
             success:false,
             message: "Internal server error, Try again",
           });
@@ -75,7 +79,7 @@ export const login = async (req, res) => {
 
         // Find a user in either User or Doctor model based on email
         const patient = await User.findOne({email});
-        const doctor = await User.findOne({email});
+        const doctor = await Doctor.findOne({email});
         
          // Check if the user exists
         if (patient){
@@ -108,6 +112,6 @@ export const login = async (req, res) => {
         res.status(200).json({status:true, message :"Successfully logged in", token, data:{...rest}, role});
 
     } catch (error) {
-        res.status(500).json({status:false, message:"Unsuccessfully logging in"});
+        res.status(500).json({status:false, message:"Failed to log in"});
     }
 };

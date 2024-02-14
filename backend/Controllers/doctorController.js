@@ -40,12 +40,12 @@ export const getSingleDoctor = async(req, res)=>{
 }
 
 export const getAllDoctor = async(req, res)=>{
-    const {id} = req.params
+    const {id} = req.params;
 
     try {
         //frontend search functionality  to filter doctors by name and specialization
         // query parameter to filter data based on specific criteria
-        const {query} = req.query
+        const {query} = req.query;
         let doctors;
         //check if query params exists
         if(query){

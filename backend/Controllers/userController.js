@@ -1,7 +1,7 @@
 import User from "../models/UserSchema.js";
 
 export const updateUser = async(req, res)=>{
-    const {id} = req.params
+    const {id} = req.params;
 
     try {
         
