@@ -37,7 +37,7 @@ export const getSingleDoctor = async(req, res)=>{
     } catch (error) {
         res.status(404).json({success: false, message: "Doctor does not exist", data:null});
     }
-}
+};
 
 export const getAllDoctor = async(req, res)=>{
     const {id} = req.params;
