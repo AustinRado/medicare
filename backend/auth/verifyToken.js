@@ -17,7 +17,7 @@ export const authenticate = async (req, res, next) =>{
         ///verify the token
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-        //if token successfully verified, extract payload that conatins user ID and role
+        //if token successfully verified, extract payload that contains user ID and role
         //then add to req obj so subsequent middleware or route handlers can access the information
         req.userId = decoded.id;
         req.role = decoded.role;

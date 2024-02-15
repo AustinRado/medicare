@@ -14,7 +14,7 @@ export const updateUser = async(req, res)=>{
 }
 
 export const deleteUser = async(req, res)=>{
-    const {id} = req.params
+    const {id} = req.params;
 
     try {
         
@@ -27,7 +27,7 @@ export const deleteUser = async(req, res)=>{
 }
 
 export const getSingleUser = async(req, res)=>{
-    const {id} = req.params
+    const {id} = req.params;
 
     try {
         
@@ -40,7 +40,7 @@ export const getSingleUser = async(req, res)=>{
 }
 
 export const getAllUser = async(req, res)=>{
-    const {id} = req.params
+    const {id} = req.params;
 
     try {
         

@@ -4,7 +4,7 @@ import User from "../models/UserSchema.js";
 import Doctor from "../models/DoctorSchema.js";
 
 const generateToken = (user) => {   
-    return jwt.sign({id: user._id, role:user.role}, process.env.JWT_SECRET, {expiresIn: "15d"});
+    return jwt.sign({id: user._id, role:user.role}, process.env.JWT_SECRET, {expiresIn: "30d"});
 };
 
 export const register = async (req, res) => {
