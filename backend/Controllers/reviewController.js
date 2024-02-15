@@ -7,9 +7,9 @@ export const getAllReviews = async (req,res)=>{
         const reviews = await Review.find({});
         res.status(200).json({success:true, message:'Successful', data:reviews});
     } catch(err){
-        res.status(404).json({success:false, message:'Not found', data:null});
+        res.status(404).json({success:false, message:'Not found'});
     }
-}
+};
 
 // create review
 export const createReview = async(req,res) => {
@@ -19,8 +19,8 @@ export const createReview = async(req,res) => {
     const newReview = new Review(req.body);
     try {
         const savedReview = await newReview.save();
-        await Doctor.findByIdAndUpdate(req.body.Doctor, {
-            $push:{reviews: savedReview._id}
+        await Doctor.findByIdAndUpdate(req.body.doctor, {
+            $push:{reviews: savedReview._id},
         });
         res.status(200).json({success:true, message:'Review submitted', data:savedReview});
     } catch (error) {

@@ -27,11 +27,11 @@ export const deleteDoctor = async(req, res)=>{
 }
 
 export const getSingleDoctor = async(req, res)=>{
-    const {id} = req.params
+    const {id} = req.params;
 
     try {
         
-        const doctor = await Doctor.findById(id).select("-password");
+        const doctor = await Doctor.findById(id).populate('reviews').select("-password");
         res.status(200).json({success: true, message: "Doctor found", data:doctor});
 
     } catch (error) {
@@ -63,4 +63,4 @@ export const getAllDoctor = async(req, res)=>{
     } catch (error) {
         res.status(404).json({success: false, message: "Doctors do not exist", data:null});
     }
-}
+};
