@@ -6,7 +6,7 @@ const router = express.Router();
 
 // authenticate, restrict(['patient']), this added layer of security is crucial as it ensures only authorized people can edit and make changes
 router.get("/:id",authenticate, restrict(['patient']), getSingleUser);
-router.put("/:id",authenticate, restrict(['patient']), updateUser);
+router.put("/:id",authenticate, restrict(['admin']), updateUser);
 router.delete("/:id",authenticate, restrict(['patient']), deleteUser);
 router.get("/",authenticate, restrict(['patient']), getAllUser);
 

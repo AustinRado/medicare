@@ -11,8 +11,10 @@ export const authenticate = async (req, res, next) =>{
         return res.status(401).json({success:false, message:'no token, authorization denied'});
     }
     try {
+       
         //extract token
         const token = authToken.split(' ')[1];
+       
 
         ///verify the token
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
@@ -46,7 +48,7 @@ export const restrict = roles => async (req, res, next) => {
     }
 
     if (!roles.includes(user.role)) {
-        return res.status(401).json({success: false, message:'not authorized'});
+        return res.status(401).json({success: false, message:'Not authorized'});
 }
 next();
-}
+};
