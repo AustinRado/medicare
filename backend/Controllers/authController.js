@@ -6,7 +6,13 @@ import Doctor from "../models/DoctorSchema.js";
 const generateToken = (user) => {   
     return jwt.sign({id: user._id, role:user.role}, process.env.JWT_SECRET, {expiresIn: "30d"});
 };
-
+/**
+ * register- allows for registration of new client
+ * @param {
+ * } req 
+ * @param {*} res 
+ * @returns 
+ */
 export const register = async (req, res) => {
     
       //destructure data from req.body
@@ -70,6 +76,14 @@ export const register = async (req, res) => {
           });
     }
 };
+
+/**
+ * login enables user login
+ * @param {
+ * } req 
+ * @param {*} res 
+ * @returns 
+ */
 
 export const login = async (req, res) => {
     //unpack details
