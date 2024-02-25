@@ -1,4 +1,4 @@
-const upload_preset = import.meta.env.VITE_UPLOAD_PRESET;
+const upload_preset = import.meta.env.VITE_UPLOAD_PRESET_NAME;
 const cloud_name = import.meta.env.VITE_CLOUDINARY_NAME;
 
 const uploadToCloudinary = async (file) => {
@@ -9,7 +9,7 @@ const uploadToCloudinary = async (file) => {
     uploadData.append("cloud_name", cloud_name);
 
     const res = await fetch( `https://api.cloudinary.com/v1_1/${cloud_name}/image/upload`, {
-        method: "POST",
+        method: "post",
         body: uploadData,
     });
     const data = await res.json(); //store the data in json format

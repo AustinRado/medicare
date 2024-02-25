@@ -1,12 +1,16 @@
 import { useState } from 'react';
 import signup from '../assets/images/signup.gif';
-import her from '../assets/images/her.jpeg';
-import { Link } from 'react-router-dom';
+import uploadToCloudinary from '../utils/uploadCloudinary';
+import { BASE_URL } from '../config';
+import { Link, useNavigate } from'react-router-dom';
+import {toast} from 'react-toastify';
+import { HashLoader } from'react-spinners';
 
 const Signup = () => {
 
   const [selectedFile, setSelectedFile] = useState(null);
   const [previewURL, setPreviewURL] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     name:'',
     email:'',
@@ -15,6 +19,7 @@ const Signup = () => {
     gender:'',
     role:'patient',
   });
+  const navigate = useNavigate();
   
   const handleInputChange = e => {
     setFormData({...formData, [e.target.name]: e.target.value});
@@ -22,15 +27,40 @@ const Signup = () => {
 
   const handleFileInputChange = async(event) => {
     const file = event.target.files[0];
+    const data = await uploadToCloudinary(file);
+    console.log(data);
+
+    setPreviewURL(data.url);
+    setSelectedFile(data.url);
+    setFormData({...formData, photo:data.url});
 
     // later we will use cloudinary to upload images
-    
-    console.log(file);
   };
 
   const submitHandler = async(event) => {
-    console.log(formData);
     event.preventDefault();
+    console.log(formData);
+    setIsLoading(true);
+    try {
+      const res = await fetch(`${BASE_URL}/auth/register`,{
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+      const {message} = await res.json();
+      if(!res.ok){
+        throw new Error(message);
+      }
+      setIsLoading(false);
+      toast.success(message);
+      navigate('/login');
+
+    } catch (error) {
+      toast.error(error.message);
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -108,14 +138,18 @@ const Signup = () => {
                     <option value='male'>Male</option>
                     <option value='female'>Female</option>
                       <option value='other'>Other</option>
-                  </select>
+                  </select> 
                 </label>
               </div>
               
             <div className='mb-5 flex items-center gap-5'>
-                <figure className='w-[60px] h-[60px] rounded-full border-2 border-solid border-primaryColor flex items-center justify-center'>
-                  <img src={her} alt='' className='w-full rounded-full'/>
+                {selectedFile && (<figure className='w-[60px] h-[60px] rounded-full border-2 border-solid border-primaryColor flex items-center justify-center'>
+                  <img 
+                    src={previewURL} 
+                    alt='' 
+                    className='w-full rounded-full'/>
                 </figure>
+                )}
                   
                 <div className='relative w-[130px] h-[50px]'>
                   <input
@@ -135,10 +169,12 @@ const Signup = () => {
             </div>
 
             <div className='mt-4 px-4 md:px-2'>
-            <button 
-            className='btn px-2 py-3 w-full rounded-md text-[18px] leading-[30px] rounded:lg'
-            type='submit'
-            >Sign Up
+            <button
+              disabled={isLoading && true} 
+              className='btn px-2 py-3 w-full rounded-md text-[18px] leading-[30px] rounded:lg'
+              type='submit'
+            >
+            {isLoading ? <HashLoader size={35} color='#ffffff'/> : "Sign up"}
             </button>
           </div>
 
