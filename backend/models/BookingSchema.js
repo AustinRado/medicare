@@ -1,14 +1,16 @@
 import mongoose from 'mongoose';
 
-const BookingSchema = new mongoose.Schema(
+const {Schema} = mongoose
+
+const BookingSchema = new Schema(
 {
     user: {
-        type: schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: 'User',
         required: true
     },
     doctor: {
-        type: schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: 'User',
         required: true
     },
