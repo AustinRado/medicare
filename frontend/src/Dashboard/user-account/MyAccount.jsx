@@ -1,7 +1,18 @@
-import React from 'react'
+import {useContext} from 'react';
+import { authContext } from '../../context/AuthContext';
 import docAvatar from '../../assets/images/docAvatar.png'
 
 const MyAccount = () => {
+
+    const {dispatch} = useContext(authContext);
+
+    /**
+     * handleLogout - logout functionality
+     */
+    const handleLogout = () => {
+        dispatch({type: 'LOGOUT'});
+    }
+
   return (
     <div className = 'max-w-[1170px] px-5 mx-auto'>
         <div className='grid md:grid-cols-3 gap-10'>
@@ -24,7 +35,11 @@ const MyAccount = () => {
                     </p>
                 </div>
                 <div className='mt-[50px] md:mt-[100px] text-white'>
-                    <button className='w-full bg-[#181A1E] p-3 text-[16px] leading-7 rounded-md'>Logout</button>
+                    <button 
+                        className='w-full bg-[#181A1E] p-3 text-[16px] leading-7 rounded-md'
+                        onClick={handleLogout}>
+                        Logout
+                    </button>
                     <button className='w-full bg-red-600 mt-4 p-3 text-[16px] leading-7 rounded-md'>Delete account</button>
                 </div>
             </div>
