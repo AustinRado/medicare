@@ -43,6 +43,13 @@ const MyAccount = () => {
                     <button className='w-full bg-red-600 mt-4 p-3 text-[16px] leading-7 rounded-md'>Delete account</button>
                 </div>
             </div>
+
+            <div className='md:col-span-2 md:px-[30px]'>
+                <div>
+                    <button className='p-2 px-5 mr-5 rounded-md text-headingColor font-semibold text-[16px] leading-7 border border-solid border-primaryColor'>My Bookings</button>
+                    <button className='p-2 px-5 rounded-md text-headingColor font-semibold text-[16px] leading-7 border border-solid border-primaryColor'>Profile Settings</button>
+                </div>
+            </div>
         </div>
     </div>
   )
