@@ -32,7 +32,7 @@ const authReducer = (state,action) => {
             return state;
     }
 };
-export const AuthContextProvide = ({children}) => {
+export const AuthContextProvider = ({children}) => {
     const [state, dispatch] = useReducer(authReducer, initialState);
     const value = {user:state.user, token:state.role, role:state.role, dispatch};
     return <authContext.Provider value={value}>{children}</authContext.Provider>;
