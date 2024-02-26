@@ -1,8 +1,8 @@
-import {useEffect, useRef} from 'react';
+import {useEffect, useRef, useContext} from 'react';
 import medicare from '../../assets/images/medicare.jpg';
-import doctor1 from '../../assets/images/doctor1.jpeg';
 import { NavLink, Link } from 'react-router-dom';
 import { BiMenu } from 'react-icons/bi';
+import {authContext} from '../../context/AuthContext';
  
 //array navLinks that redirects to the pages
 const navLinks = [
@@ -27,6 +27,7 @@ const navLinks = [
 const Header = () => {
   const headerRef = useRef(null);
   const menuRef = useRef(null);
+  const {user, role, token} = useContext(authContext);
 
   /**
    * @desc adds sticky header effect when user scrolls more than 80 px
@@ -85,16 +86,27 @@ const Header = () => {
 
             {/*========nav right=========*/}
             <div className='flex items-center gap-4'>
-                <div className='hidden'>
-                  <Link to='/'>
-                    <figure className='w-[35px] h-[35px] rounded-full cursor-pointer'>
-                      <img src={doctor1} className='w-full h-[35px] rounded-full' alt='doctor' />
+            
+            {
+              token && user ? 
+              (
+              <div>
+                  <Link to={`${role === 'doctor'? '/doctor/profile/me' : '/users/profile/me'}`}>
+                    <figure className='w-[35px] h-[35px] rounded-full cursor-pointer'>        
+                    <img 
+                        src={user? user.photo : 'photo'} 
+                        className='w-full h-[35px] rounded-full' 
+                        alt='doctor' />
                     </figure>
+                    <h2>{user? user.name : 'welcome'}</h2>
                   </Link>
-                </div>
-                <Link to='/login'>
-                  <button className='bg-primaryColor py-2 px-6 text-black font-[600] h-[44px] flex items-center justify-center rounded-full'>Login</button>
-                </Link>
+                </div> ) : (
+              
+              <Link to='/login'>
+                <button className='bg-primaryColor py-2 px-6 text-black font-[600] h-[44px] flex items-center justify-center rounded-full'>Login</button>
+              </Link>
+              )
+            }
                 
                 <span className='md:hidden' onClick={toggleMenu}>
                   <BiMenu className='w-6 h-6 cursor-pointer'/>

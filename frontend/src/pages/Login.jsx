@@ -1,7 +1,7 @@
 import { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import {toast} from 'react-toastify';
-import { HashLoader } from'react-spinners';
+import {HashLoader} from'react-spinners';
 import { BASE_URL } from '../config';
 import {authContext} from '../context/AuthContext.jsx';
 
@@ -90,9 +90,9 @@ const Login = () => {
         </div>
         <div className='mt-4 px-4 md:px-2'>
           <button 
-          className='btn px-2 py-3 w-full rounded-md text-[18px] leading-[30px] rounded:lg'
-          type='submit'
-          >Login
+            className='btn px-2 py-3 w-full rounded-md text-[18px] leading-[30px] rounded:lg'
+            type='submit'
+          >{isLoading ? <HashLoader size={25} color='#fff'/> : 'Login'}
           </button>
         </div>
 
