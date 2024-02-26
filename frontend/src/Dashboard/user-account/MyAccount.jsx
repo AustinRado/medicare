@@ -1,10 +1,11 @@
-import {useContext} from 'react';
+import {useContext, useState} from 'react';
 import { authContext } from '../../context/AuthContext';
 import docAvatar from '../../assets/images/docAvatar.png'
 
 const MyAccount = () => {
 
     const {dispatch} = useContext(authContext);
+    const [tab, setTab] = useState('bookings');
 
     /**
      * handleLogout - logout functionality
@@ -46,8 +47,16 @@ const MyAccount = () => {
 
             <div className='md:col-span-2 md:px-[30px]'>
                 <div>
-                    <button className='p-2 px-5 mr-5 rounded-md text-headingColor font-semibold text-[16px] leading-7 border border-solid border-primaryColor'>My Bookings</button>
-                    <button className='p-2 px-5 rounded-md text-headingColor font-semibold text-[16px] leading-7 border border-solid border-primaryColor'>Profile Settings</button>
+                    <button 
+                        onClick={()=>setTab('bookings')}
+                        className={`${tab === 'bookings' && 'bg-primaryColor text-white font-normal'} py-2 px-5 mr-5 rounded-md text-headingColor font-semibold text-[16px] leading-7 border border-solid border-primaryColor`}>
+                        My Bookings
+                        </button>
+                    <button
+                        onClick={()=>setTab('settings')} 
+                        className={`${tab==='settings' && 'bg-primaryColor text-white font-normal'} py-2 px-5 rounded-md text-headingColor font-semibold text-[16px] leading-7 border border-solid border-primaryColor`}>
+                        Profile Settings
+                    </button>
                 </div>
             </div>
         </div>
