@@ -27,8 +27,8 @@ const MyAccount = () => {
   return (
     <section>
         <div className = 'max-w-[1170px] px-5 mx-auto'>
-            {loading && <Loading/>}
-            {error && <Error errMessage={error}/>}
+            {loading && !error && <Loading/>}
+            {error && !loading && <Error errMessage={error}/>}
 
             {!loading && !error && (
                 <div className='grid md:grid-cols-3 gap-10'>
