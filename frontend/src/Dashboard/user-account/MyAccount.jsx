@@ -3,23 +3,35 @@ import { authContext } from '../../context/AuthContext';
 import docAvatar from '../../assets/images/docAvatar.png';
 import MyBooking from './MyBooking';
 import Profile from './Profile';
+import useFetchData from '../../hooks/useFetchData';
+import { BASE_URL } from '../../config';
+import Loading from '../../components/Loader/Loading';
+import Error from '../../components/Error/Error';
+
 
 const MyAccount = () => {
 
     const {dispatch} = useContext(authContext);
     const [tab, setTab] = useState('bookings');
 
+    const {data:userData, loading, error} = useFetchData(`${BASE_URL}/users/profile/me`);
+    //console.log('user_data :', userData);
+
     /**
      * handleLogout - logout functionality
      */
     const handleLogout = () => {
         dispatch({type: 'LOGOUT'});
-    }
+    };
 
   return (
     <section>
         <div className = 'max-w-[1170px] px-5 mx-auto'>
-            <div className='grid md:grid-cols-3 gap-10'>
+            {loading && <Loading/>}
+            {error && <Error errMessage={error}/>}
+
+            {!loading && !error && (
+                <div className='grid md:grid-cols-3 gap-10'>
                 <div className = 'pb-[50px] px-[30px] rounded-md'>
                     <div className='flex items-center justify-center'>
                         <figure className='w-[100px] h-[100px] rounded-full border-solid border-2 border-primaryColor'>
@@ -67,6 +79,8 @@ const MyAccount = () => {
 
                 </div>
             </div>
+            )
+            }
         </div>
     </section>
   )
